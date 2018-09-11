@@ -2,9 +2,16 @@ import numpy
 
 
 def im2col(A, patch_size):
+    num_patches = 6  # how do I compute this
+    B = numpy.ndarray(shape=(patch_size[0]*patch_size[1], num_patches))
+
+    i = 0
     for col in range(A.shape[1] - patch_size[1] + 1):
         for row in range(A.shape[0] - patch_size[0] + 1):
-            print(A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F'))
+            B[i] = A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F')
+            i += 1
+
+    return B
 
 
 if __name__ == '__main__':
