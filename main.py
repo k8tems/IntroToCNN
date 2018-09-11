@@ -1,14 +1,14 @@
 import numpy as np
 
 
-def get_patch_coordinates(A_shape, patch_size):
+def get_patch_crds(A_shape, patch_size):
     return [(col, row)
-            for col in range(A.shape[1] - patch_size[1] + 1)
-            for row in range(A.shape[0] - patch_size[0] + 1)]
+            for col in range(A_shape[1] - patch_size[1] + 1)
+            for row in range(A_shape[0] - patch_size[0] + 1)]
 
 
 def im2col(A, patch_size):
-    patch_crds = get_patch_coordinates(A.shape, patch_size)
+    patch_crds = get_patch_crds(A.shape, patch_size)
     B = np.ndarray(shape=(len(patch_crds), patch_size[0]*patch_size[1]))
 
     for i, (col, row) in enumerate(patch_crds):
