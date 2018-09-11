@@ -1,9 +1,9 @@
-import numpy
+import numpy as np
 
 
 def im2col(A, patch_size):
     num_patches = 6  # how do I compute this
-    B = numpy.ndarray(shape=(num_patches, patch_size[0]*patch_size[1]))
+    B = np.ndarray(shape=(num_patches, patch_size[0]*patch_size[1]))
 
     i = 0
     for col in range(A.shape[1] - patch_size[1] + 1):
@@ -15,12 +15,12 @@ def im2col(A, patch_size):
 
 
 if __name__ == '__main__':
-    A = numpy.array(
+    A = np.array(
         [[1, 2, 3, 1],
          [4, 5, 6, 1],
          [7, 8, 9, 1]])
 
-    f = numpy.array(
+    f = np.array(
         [[1, 1],
          [1, 1]]
     )
@@ -32,4 +32,4 @@ if __name__ == '__main__':
         [5, 8, 6, 9, 1, 1],
     ]
 
-    assert(numpy.array_equal(expected, im2col(A, [2, 2])))
+    assert(np.array_equal(expected, im2col(A, [2, 2])))
