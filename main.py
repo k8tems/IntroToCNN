@@ -40,5 +40,4 @@ if __name__ == '__main__':
     B = im2col(A, [2, 2])
 
     print(B)
-
-    assert(np.array_equal(expected, B))
+    print(B.transpose())
