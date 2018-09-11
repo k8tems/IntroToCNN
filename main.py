@@ -42,11 +42,6 @@ if __name__ == '__main__':
     )
 
     B = im2col(x, k.shape)
-
-    print(B.transpose())
-
-    num_B_rows = B.shape[1] // x.shape[0]
-
-    y = reorder(np.matmul(B.transpose(), flatten(k)), num_rows=num_B_rows)
+    y = reorder(np.matmul(B.transpose(), flatten(k)), num_rows=B.shape[1] // x.shape[0])
 
     print(y)
