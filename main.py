@@ -41,3 +41,5 @@ if __name__ == '__main__':
 
     print(B)
     print(B.transpose())
+
+    print(np.matmul(B.transpose(), f.ravel(order='F')))
