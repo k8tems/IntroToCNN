@@ -9,12 +9,12 @@ def get_patch_crds(A_shape, patch_size):
 
 def im2col(A, patch_size):
     patch_crds = get_patch_crds(A.shape, patch_size)
-    B = np.ndarray(shape=(len(patch_crds), patch_size[0]*patch_size[1]))
+    B = np.ndarray(shape=(patch_size[0] * patch_size[1], len(patch_crds)))
 
     for i, (col, row) in enumerate(patch_crds):
-        B[i] = A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F')
+        B[:, i] = A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F')
 
-    return B.transpose()
+    return B
 
 
 if __name__ == '__main__':
