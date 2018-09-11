@@ -30,6 +30,11 @@ def im2col(x, patch_size):
     return B
 
 
+def convolve(x, k):
+    B = im2col(x, k.shape)
+    return reorder(np.matmul(B.transpose(), flatten(k)), num_rows=B.shape[1] // x.shape[0])
+
+
 if __name__ == '__main__':
     x = np.array(
         [[1, 2, 3, 1],
@@ -41,7 +46,4 @@ if __name__ == '__main__':
          [1, 1]]
     )
 
-    B = im2col(x, k.shape)
-    y = reorder(np.matmul(B.transpose(), flatten(k)), num_rows=B.shape[1] // x.shape[0])
-
-    print(y)
+    print(convolve(x, k))
