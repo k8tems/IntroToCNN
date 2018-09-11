@@ -9,6 +9,7 @@ def get_patch_crds(A_shape, patch_size):
 
 
 def im2col(A, patch_size):
+    # Apply MATLAB style `im2col` expansion to `A`
     patch_crds = get_patch_crds(A.shape, patch_size)
     B = np.ndarray(shape=(patch_size[0] * patch_size[1], len(patch_crds)))
 
