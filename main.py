@@ -2,6 +2,7 @@ import numpy as np
 
 
 def get_patch_crds(A_shape, patch_size):
+    # Highly important for outer loop to iterate over rows and inner loop to iterate over cols
     return [(col, row)
             for col in range(A_shape[1] - patch_size[1] + 1)
             for row in range(A_shape[0] - patch_size[0] + 1)]
