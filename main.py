@@ -2,7 +2,7 @@ import numpy as np
 
 
 def reorder(x, num_rows):
-    print(x.reshape((-1, num_rows)).transpose())
+    return x.reshape((-1, num_rows)).transpose()
 
 
 def flatten(x):
