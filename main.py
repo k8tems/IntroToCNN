@@ -49,6 +49,5 @@ if __name__ == '__main__':
 
     B = im2col(A, f.shape)
 
-    print(B)
     print(B.transpose())
     print(reorder(np.matmul(B.transpose(), flatten(f)), num_rows=2))
