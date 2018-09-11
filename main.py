@@ -21,27 +21,27 @@ def get_patch_crds(input_shape, patch_size):
 def im2col(x, patch_size):
     """Apply MATLAB style `im2col` expansion to `A`"""
     patch_crds = get_patch_crds(x.shape, patch_size)
-    B = np.ndarray(shape=(patch_size[0] * patch_size[1], len(patch_crds)))
+    y = np.ndarray(shape=(patch_size[0] * patch_size[1], len(patch_crds)))
 
     for i, (col, row) in enumerate(patch_crds):
         patch = x[row:row + patch_size[0], col:col + patch_size[1]]
-        B[:, i] = flatten(patch)
+        y[:, i] = flatten(patch)
 
-    return B
+    return y
 
 
 if __name__ == '__main__':
-    A = np.array(
+    x = np.array(
         [[1, 2, 3, 1],
          [4, 5, 6, 1],
          [7, 8, 9, 1]])
 
-    f = np.array(
+    k = np.array(
         [[1, 1],
          [1, 1]]
     )
 
-    B = im2col(A, f.shape)
+    y = im2col(x, k.shape)
 
-    print(B.transpose())
-    print(reorder(np.matmul(B.transpose(), flatten(f)), num_rows=2))
+    print(y.transpose())
+    print(reorder(np.matmul(y.transpose(), flatten(k)), num_rows=2))
