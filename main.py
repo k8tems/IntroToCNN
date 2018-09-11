@@ -8,13 +8,11 @@ def get_patch_coordinates(A_shape, patch_size):
 
 
 def im2col(A, patch_size):
-    num_patches = 6  # how do I compute this
-    B = np.ndarray(shape=(num_patches, patch_size[0]*patch_size[1]))
+    patch_crds = get_patch_coordinates(A.shape, patch_size)
+    B = np.ndarray(shape=(len(patch_crds), patch_size[0]*patch_size[1]))
 
-    i = 0
-    for col, row in get_patch_coordinates(A.shape, patch_size):
+    for i, (col, row) in enumerate(patch_crds):
         B[i] = A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F')
-        i += 1
 
     return B.transpose()
 
