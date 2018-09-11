@@ -47,7 +47,7 @@ if __name__ == '__main__':
         [5, 8, 6, 9, 1, 1],
     ]
 
-    B = im2col(A, [2, 2])
+    B = im2col(A, f.shape)
 
     print(B)
     print(B.transpose())
