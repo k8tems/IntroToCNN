@@ -14,7 +14,8 @@ def im2col(x, patch_size):
     B = np.ndarray(shape=(patch_size[0] * patch_size[1], len(patch_crds)))
 
     for i, (col, row) in enumerate(patch_crds):
-        B[:, i] = x[row:row + patch_size[0], col:col + patch_size[1]].ravel(order='F')
+        patch = x[row:row + patch_size[0], col:col + patch_size[1]]
+        B[:, i] = patch.ravel(order='F')
 
     return B
 
