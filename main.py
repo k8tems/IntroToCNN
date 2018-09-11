@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def reorder(x, num_rows):
+    print(x.reshape((-1, num_rows)).transpose())
+
+
 def flatten(x):
     # `The input and kernel is flattened in a "column first` manner
     return x.ravel(order='F')
@@ -47,5 +51,4 @@ if __name__ == '__main__':
 
     print(B)
     print(B.transpose())
-
-    print(np.matmul(B.transpose(), flatten(f)))
+    print(reorder(np.matmul(B.transpose(), flatten(f)), num_rows=2))
