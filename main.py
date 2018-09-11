@@ -2,6 +2,7 @@ import numpy as np
 
 
 def reorder(x, num_rows):
+    # Inverse of `flatten
     return x.reshape((-1, num_rows)).transpose()
 
 
