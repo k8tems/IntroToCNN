@@ -4,7 +4,7 @@ import numpy
 def im2col(A, patch_size):
     for col in range(A.shape[1] - patch_size[1] + 1):
         for row in range(A.shape[0] - patch_size[0] + 1):
-            print(A[row:row+patch_size[0], col:col+patch_size[1]])
+            print(A[row:row+patch_size[0], col:col+patch_size[1]].reshape((patch_size[0] * patch_size[1],)))
 
 
 if __name__ == '__main__':
