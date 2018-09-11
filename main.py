@@ -1,3 +1,6 @@
+"""
+Python implementation of section 6.3 from `Introduction to Convolutional Neural Networks`
+"""
 import numpy as np
 
 
