@@ -3,7 +3,7 @@ import numpy
 
 def im2col(A, patch_size):
     num_patches = 6  # how do I compute this
-    B = numpy.ndarray(shape=(patch_size[0]*patch_size[1], num_patches))
+    B = numpy.ndarray(shape=(num_patches, patch_size[0]*patch_size[1]))
 
     i = 0
     for col in range(A.shape[1] - patch_size[1] + 1):
@@ -11,7 +11,7 @@ def im2col(A, patch_size):
             B[i] = A[row:row+patch_size[0], col:col+patch_size[1]].ravel(order='F')
             i += 1
 
-    return B
+    return B.transpose()
 
 
 if __name__ == '__main__':
@@ -32,4 +32,4 @@ if __name__ == '__main__':
         [5, 8, 6, 9, 1, 1],
     ]
 
-    assert(expected == im2col(A, [2, 2]))
+    assert(numpy.array_equal(expected, im2col(A, [2, 2])))
