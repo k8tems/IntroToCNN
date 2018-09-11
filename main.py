@@ -1,6 +1,11 @@
 import numpy as np
 
 
+def flatten(x):
+    # `The input and kernel is flattened in a "column first` manner
+    return x.ravel(order='F')
+
+
 def get_patch_crds(input_shape, patch_size):
     # Highly important for outer loop to iterate over rows and inner loop to iterate over cols
     return [(col, row)
@@ -15,7 +20,7 @@ def im2col(x, patch_size):
 
     for i, (col, row) in enumerate(patch_crds):
         patch = x[row:row + patch_size[0], col:col + patch_size[1]]
-        B[:, i] = patch.ravel(order='F')
+        B[:, i] = flatten(patch)
 
     return B
 
@@ -43,4 +48,4 @@ if __name__ == '__main__':
     print(B)
     print(B.transpose())
 
-    print(np.matmul(B.transpose(), f.ravel(order='F')))
+    print(np.matmul(B.transpose(), flatten(f)))
